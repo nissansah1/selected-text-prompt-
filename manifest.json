@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Gibbs",
+  "version": "1.0",
+  "description": "Select text, enter a prompt, and use Gemini API to generate a response inline.",
+  "permissions": ["scripting", "activeTab", "storage"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "commands": {
+    "activate-extension": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+X"
+      },
+      "description": "Trigger prompt input"
+    }
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  }
+}
